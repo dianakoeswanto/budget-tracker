@@ -8,7 +8,7 @@ const config = {
     filename: 'bundle.js',
     publicPath: ""
   },
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {
