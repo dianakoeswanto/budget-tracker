@@ -4,3 +4,5 @@ Light weight PWA application that you can install to your phone or desktop to tr
 ## Deployment URL
 https://agile-sierra-45720.herokuapp.com/
 
+## Screenshot of the application
+![Application](./assets/images/budget-tracker.png)
