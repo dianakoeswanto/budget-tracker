@@ -1,18 +1,16 @@
-  const FILES_TO_CACHE = [
-    "/",
-    "/index.html",
-    "/dist/manifest.json",
-    "/dist/bundle.js",
-    "/db.js",
-    "/dist/icon-192x192.png",
-    "/dist/icon-512x512.png",
-    "/style.css",
-    "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
-    "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
+const CACHED_FILES = [
+	"/",
+	"/index.html",
+	"/db.js",
+	"/index.js",
+	"/styles.css",
+	"/icons/icon-192x192.png",
+	"/icons/icon-512x512.png",
+	"/manifest.json"
   ];
 
-const CACHE_NAME = "static-cache";
-const DATA_CACHE_NAME = "data-cache";
+  const CACHE_NAME = "static-cache";
+  const DATA_CACHE_NAME = "data-cache";
 
 // install
 self.addEventListener("install", (evt) => {
@@ -50,7 +48,6 @@ self.addEventListener("fetch", (evt) =>{
 			caches.open(DATA_CACHE_NAME).then(cache => {
 				return fetch(evt.request)
 					.then(response => {
-						// If the response was good, clone it and store it in the cache.
 						if (response.status === 200) {
 							cache.put(evt.request.url, response.clone());
 						}
@@ -58,7 +55,6 @@ self.addEventListener("fetch", (evt) =>{
 						return response;
 					})
 					.catch(err => {
-						// Network request failed, try to get it from the cache.
 						console.log(err);
 						return cache.match(evt.request);
 					});
